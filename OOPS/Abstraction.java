@@ -59,7 +59,7 @@ class MyCar implements Car{
 
 public class Abstraction{
     public static void main(String[] args) {
-        MyCar obj=new MyCar("Suzuki","alto");
+        Car obj=new MyCar("Suzuki","alto");
         obj.startEngine();
         obj.shiftGear(5);
         obj.accelerate();
