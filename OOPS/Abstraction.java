@@ -1,4 +1,5 @@
 package OOPS;
+
 interface Car{
     void startEngine();
     void shiftGear(int gear);
@@ -55,6 +56,7 @@ class MyCar implements Car{
         System.out.println(brand + " " + model + " : Engine turned off.");
     }
 }
+
 public class Abstraction{
     public static void main(String[] args) {
         MyCar obj=new MyCar("Suzuki","alto");
