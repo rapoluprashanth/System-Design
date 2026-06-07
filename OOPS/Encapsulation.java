@@ -7,23 +7,23 @@ class MyCar {
     private int currentSpeed = 0;
     private int currentGear = 0;
 
-    MyCar(String brand,String model){
-      this.brand=brand;
-      this.model=model;
-    } 
+    MyCar(String brand, String model) {
+        this.brand = brand;
+        this.model = model;
+    }
 
-    public int getCurrentSpeed(){
+    public int getCurrentSpeed() {
         return this.currentSpeed;
     }
 
-    public void setCurrentSpeed(int currentSpeed){
-        this.currentSpeed=currentSpeed;
+    public void setCurrentSpeed(int currentSpeed) {
+        this.currentSpeed = currentSpeed;
         return;
     }
 
-    public void startEngine(){
-      isEngineOn=true;
-      System.out.println(brand + " " + model + " : Engine starts with a roar!");
+    public void startEngine() {
+        isEngineOn = true;
+        System.out.println(brand + " " + model + " : Engine starts with a roar!");
     }
 
     public void shiftGear(int gear) {
@@ -46,7 +46,8 @@ class MyCar {
 
     public void brake() {
         currentSpeed -= 20;
-        if (currentSpeed < 0) currentSpeed = 0;
+        if (currentSpeed < 0)
+            currentSpeed = 0;
         System.out.println(brand + " " + model + " : Braking! Speed is now " + currentSpeed + " km/h");
     }
 
@@ -58,17 +59,17 @@ class MyCar {
     }
 }
 
-public class Encapsulation{
+public class Encapsulation {
     public static void main(String[] args) {
-        MyCar obj=new MyCar("Suzuki","alto");
+        MyCar obj = new MyCar("Suzuki", "alto");
         obj.startEngine();
         obj.shiftGear(5);
         obj.accelerate();
         obj.brake();
-        obj.stopEngine();       
+        obj.stopEngine();
 
-        // obj.currentSpeed=100;   Data security
-        obj.setCurrentSpeed(100);   
+        // obj.currentSpeed=100; Data security
+        obj.setCurrentSpeed(100);
         System.out.println(obj.getCurrentSpeed());
     }
 }

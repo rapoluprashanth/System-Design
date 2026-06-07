@@ -1,16 +1,16 @@
 package OOPS;
 
-abstract class Car{
+abstract class Car {
     protected String brand;
     protected String model;
     protected boolean isEngineOn;
     protected int currentSpeed;
 
-    public Car(String brand, String model){
-        this.brand=brand;
-        this.model=model;
-        this.isEngineOn=false;
-        this.currentSpeed=0;
+    public Car(String brand, String model) {
+        this.brand = brand;
+        this.model = model;
+        this.isEngineOn = false;
+        this.currentSpeed = 0;
     }
 
     // common methods
@@ -25,29 +25,29 @@ abstract class Car{
         System.out.println(brand + " " + model + " : Engine turned off.");
     }
 
-    public abstract void accelerate();            // Dynamic polymorphism
+    public abstract void accelerate(); // Dynamic polymorphism
 
-    public abstract void accelerate(int speed);   // static  polymorphism
+    public abstract void accelerate(int speed); // static polymorphism
 
-    public abstract void brake();                 // Dynamic polymorphism
+    public abstract void brake(); // Dynamic polymorphism
 }
 
-class ManualCar extends Car{
+class ManualCar extends Car {
 
     protected int currentGear;
 
-    public ManualCar(String brand, String model){
+    public ManualCar(String brand, String model) {
         super(brand, model);
-        this.currentGear=0;
+        this.currentGear = 0;
     }
 
-    public void shiftGear(int gear){
-        currentGear=gear;
+    public void shiftGear(int gear) {
+        currentGear = gear;
         System.out.println(brand + " " + model + " : Shifted to gear " + currentGear);
     }
 
-    public void accelerate(){                // Overriding and Overloading
-        if(!isEngineOn) {
+    public void accelerate() { // Overriding and Overloading
+        if (!isEngineOn) {
             System.out.println(brand + " " + model + " : Cannot accelerate! Engine is off.");
             return;
         }
@@ -55,8 +55,8 @@ class ManualCar extends Car{
         System.out.println(brand + " " + model + " : Accelerating to " + currentSpeed + " km/h");
     }
 
-    public void accelerate(int speed){       // Overriding and Overloading
-        if(!isEngineOn) {
+    public void accelerate(int speed) { // Overriding and Overloading
+        if (!isEngineOn) {
             System.out.println(brand + " " + model + " : Cannot accelerate! Engine is off.");
             return;
         }
@@ -64,77 +64,83 @@ class ManualCar extends Car{
         System.out.println(brand + " " + model + " : Accelerating to " + currentSpeed + " km/h");
     }
 
-    public void brake(){                    // Overriding 
-        if(!isEngineOn) {
+    public void brake() { // Overriding
+        if (!isEngineOn) {
             System.out.println(brand + " " + model + " : Cannot brake! Engine is off.");
             return;
         }
         currentSpeed -= 20;
-        if (currentSpeed < 0) currentSpeed = 0;
+        if (currentSpeed < 0)
+            currentSpeed = 0;
         System.out.println(brand + " " + model + " : Braking! Speed is now " + currentSpeed + " km/h");
     }
 }
 
-class ElectricCar extends Car{
+class ElectricCar extends Car {
     private int batteryPercentage;
 
-    public ElectricCar(String brand, String model){
+    public ElectricCar(String brand, String model) {
         super(brand, model);
-        this.batteryPercentage=100;
+        this.batteryPercentage = 100;
     }
 
-    public void batteryCharge(){
-         batteryPercentage=100;
-         System.out.println(brand + " " + model + " : Battery fully charged!");
+    public void batteryCharge() {
+        batteryPercentage = 100;
+        System.out.println(brand + " " + model + " : Battery fully charged!");
     }
 
-    public void accelerate(){                  // Overriding and Overloading
-        if(!isEngineOn) {
+    public void accelerate() { // Overriding and Overloading
+        if (!isEngineOn) {
             System.out.println(brand + " " + model + " : Cannot accelerate! Engine is off.");
             return;
         }
-        if(batteryPercentage <= 0) {
+        if (batteryPercentage <= 0) {
             System.out.println(brand + " " + model + " : Battery dead! Cannot accelerate.");
             return;
         }
         currentSpeed += 20;
-        batteryPercentage-=10;
-        System.out.println(brand + " " + model + " : Accelerating to " + currentSpeed + " km/h. Battery at " + batteryPercentage + "%.");
+        batteryPercentage -= 10;
+        System.out.println(brand + " " + model + " : Accelerating to " + currentSpeed + " km/h. Battery at "
+                + batteryPercentage + "%.");
     }
 
-     public void accelerate(int speed){        // Overriding and Overloading
-        if(!isEngineOn) {  
+    public void accelerate(int speed) { // Overriding and Overloading
+        if (!isEngineOn) {
             System.out.println(brand + " " + model + " : Cannot accelerate! Engine is off.");
             return;
         }
-        if(batteryPercentage <= 0) {
+        if (batteryPercentage <= 0) {
             System.out.println(brand + " " + model + " : Battery dead! Cannot accelerate.");
             return;
         }
         currentSpeed += speed;
-        batteryPercentage-=10;
-        System.out.println(brand + " " + model + " : Accelerating to " + currentSpeed + " km/h. Battery at " + batteryPercentage + "%.");
+        batteryPercentage -= 10;
+        System.out.println(brand + " " + model + " : Accelerating to " + currentSpeed + " km/h. Battery at "
+                + batteryPercentage + "%.");
     }
 
-    public void brake(){                      // Overriding
-        if(!isEngineOn) {
+    public void brake() { // Overriding
+        if (!isEngineOn) {
             System.out.println(brand + " " + model + " : Cannot brake! Engine is off.");
             return;
         }
-        if(batteryPercentage <= 0) {
+        if (batteryPercentage <= 0) {
             System.out.println(brand + " " + model + " : Battery dead! Cannot brake.");
             return;
         }
         currentSpeed -= 20;
-        batteryPercentage+=10;
-        if (currentSpeed < 0) currentSpeed = 0;
-        System.out.println(brand + " " + model + " : Braking! Speed is now " + currentSpeed + " km/h. Battery at " + batteryPercentage + "%.");
+        batteryPercentage += 10;
+        if (currentSpeed < 0)
+            currentSpeed = 0;
+        System.out.println(brand + " " + model + " : Braking! Speed is now " + currentSpeed + " km/h. Battery at "
+                + batteryPercentage + "%.");
     }
 
 }
+
 public class Polymorphism {
     public static void main(String[] args) {
-        Car obj1=new ManualCar("shift","alto");
+        Car obj1 = new ManualCar("shift", "alto");
         obj1.startEngine();
         obj1.accelerate();
         obj1.accelerate(10);
@@ -143,7 +149,7 @@ public class Polymorphism {
 
         System.out.println("----------------------");
 
-        Car obj2=new ElectricCar("Tesla","Model S");
+        Car obj2 = new ElectricCar("Tesla", "Model S");
         obj2.startEngine();
         obj2.accelerate();
         obj2.accelerate(20);
