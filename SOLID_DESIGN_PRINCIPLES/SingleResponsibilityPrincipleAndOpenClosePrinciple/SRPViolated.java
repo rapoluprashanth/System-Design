@@ -1,4 +1,4 @@
-package SOLID_DESIGN_PRINCIPLES.SingleResponsibilityPrinciple;
+package SOLID_DESIGN_PRINCIPLES.SingleResponsibilityPrincipleAndOpenClosePrinciple;
 
 import java.util.*;
 

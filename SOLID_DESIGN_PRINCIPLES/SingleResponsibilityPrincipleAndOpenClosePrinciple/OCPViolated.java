@@ -1,4 +1,4 @@
-package SOLID_DESIGN_PRINCIPLES.SingleResponsibilityPrinciple;
+package SOLID_DESIGN_PRINCIPLES.SingleResponsibilityPrincipleAndOpenClosePrinciple;
 
 import java.util.*;
 
@@ -51,7 +51,9 @@ class ShoppingCartInvoice {
 
 }
 
-// 3. ShoppingCartSaveToDB: Only responsible for Saving DB Operations logic.
+// 3(i). ShoppingCartSaveToDB: Only responsible for Saving DB Operations logic.
+// 3(ii). ShoppingCartSaveToDB has manyDB Methods so in future if we are adding
+// other DB we are breaking existing class logic which violated OCP
 class ShoppingCartSaveToDB {
     private ShoppingCart cart;
 
@@ -59,12 +61,20 @@ class ShoppingCartSaveToDB {
         this.cart = cart;
     }
 
-    public void saveToDatabase() {
-        System.out.println("Saving shopping cart to database...");
+    void saveToSQLDatabase() {
+        System.out.println("Saving shopping cart to SQL DB...");
+    }
+
+    void saveToMongoDatabase() {
+        System.out.println("Saving shopping cart to Mongo DB...");
+    }
+
+    void saveToFile() {
+        System.out.println("Saving shopping cart to File...");
     }
 }
 
-public class SRPFollowed {
+public class OCPViolated {
     public static void main(String[] args) {
         ShoppingCart sc = new ShoppingCart();
         sc.addProduct(new Product("Laptop", 50000.0));
@@ -75,6 +85,6 @@ public class SRPFollowed {
         sCartInvoice.printInvoice();
 
         ShoppingCartSaveToDB saveToDB = new ShoppingCartSaveToDB(sc);
-        saveToDB.saveToDatabase();
+        saveToDB.saveToSQLDatabase();
     }
 }
