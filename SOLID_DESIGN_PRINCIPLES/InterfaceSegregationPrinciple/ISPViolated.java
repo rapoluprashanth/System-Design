@@ -1,5 +1,7 @@
 package SOLID_DESIGN_PRINCIPLES.InterfaceSegregationPrinciple;
 
+// -Many client specific  interface are better than one general purpose interface 
+// -client should not be forced to implement methods if they don't need
 interface Shape {
     public void area();
 
@@ -18,7 +20,7 @@ class Square implements Shape {
         System.out.println("Area of Square is " + side * side);
     }
 
-    public void volume() {   // Unnecessary method
+    public void volume() { // Unnecessary method
         throw new UnsupportedOperationException("Volume not applicable for Square");
     }
 }
@@ -37,7 +39,7 @@ class Rectangle implements Shape {
         System.out.println("Area of  is Rectangle " + length * breadth);
     }
 
-    public void volume() {   // Unnecessary method
+    public void volume() { // Unnecessary method
         throw new UnsupportedOperationException("Volume not applicable for Rectangle");
     }
 }
